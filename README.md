@@ -1,2 +1,2 @@
 # web-scraping-challenge
-we scrapping homework
+web scrapping homework
