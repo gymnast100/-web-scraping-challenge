@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mars Details</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron text-center">
+          <h1>Mission to Mars</h1>
+          <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+        </div>
+
+        <div class="container">
+          <h2> Latest Mars News</h2>
+          <h4>{{totalmars_data.news_title}}</h4>
+          <p>{{totalmars_data.news_para}}</p>
+        </div>
+        <!-- This part has one row divided into 2 columns -->
+        <!-- First column has the featured image  -->
+        <div class="container" >
+          <div class="row">
+            <div class="col-md-8" style="background-color: whitesmoke">
+              <h2>Featured Mars Image</h2>
+              <img src="{{totalmars_data.featured_img_url}}" alt="Featured Mars Image"  width = "725"  height="575">
+            </div>        
+          <!-- Second column has two parts -->
+            <div class="col-md-4" style="background-color: whitesmoke">
+
+           <!-- First part has the  twitter tweet -->
+                <div class="card" style="width: 18 rem;">
+                      <div class="card-body" >
+                        <h6 class="card-title">Current Weather on Mars</h6>
+                        <p class="card-text" style="font-size: small">{{totalmars_data.mars_weather}}</p>
+                      </div>
+               
+                </div>
+              
+              <br>
+             <!-- second part has the facts table -->
+              <h4> Mars Facts</h4>
+              {{totalmars_data.html_table_string | safe}}         
+            </div>     
+          </div>
+        </div>
+
+
+          <!-- Mars Hemisphere Section  -->
+        <div class="container">
+          <h3 style="padding-top: 30px; margin-top: 50px;text-align: center;">Mars Hemispheres</h3>
+          <hr>
+          
+            <div class="row" id="mars-hemispheres">
+              {% for hemisphere in totalmars_data.hemisphere_image_urls %}
+              <div class="col-md-6">
+                <div class="card-body" style="background-color:whitesmoke;" style="border: thick;" style="border-color:darkslategrey;">
+                   <img src="{{hemisphere.img_url}}" alt="" style= "width: 100%;">
+                     <h4>{{hemisphere.title}}</h4>
+                </div>
+                <br>
+              </div>
+              {%endfor%}
+        </div>
+    </div>
+
+    
+</body>
+</html>
