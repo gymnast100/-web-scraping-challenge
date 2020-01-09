@@ -10,18 +10,18 @@ The goal of  this assignment was to  build a web application that scrapes variou
 ### NASA Mars News
 •	Scraped the NASA Mars News Site and collect the latest News Title and Paragraph Text.
   JPL Mars Space Images - Featured Image
-•	Visited the url for JPL Featured Space Image here.
+•	Visited the url for JPL Featured Space Image.
 •	Used splinter to navigate the site and find the image url for the current Featured Mars Image 
 
 ### Mars Weather
-•	Visited the Mars Weather twitter account here and scraped the latest Mars weather tweet from the page. 
+•	Visited the Mars Weather twitter account and scraped the latest Mars weather tweet from the page. 
 
 ### Mars Facts
-•	Visited the Mars Facts webpage here and used Pandas to scrape the table containing facts about the planet including           Diameter, Mass, etc.
+•	Visited the Mars Facts webpage and used Pandas to scrape the table containing facts about the planet including           Diameter, Mass, etc.
 •	Used Pandas to convert the data to a HTML table string.
 
 ### Mars Hemispheres
-•	Visited the USGS Astrogeology site here to obtain high resolution images for each of Mar's hemispheres.
+•	Visited the USGS Astrogeology site to obtain high resolution images for each of Mar's hemispheres.
 •	Saved both the image url string for the full resolution hemisphere image, and the Hemisphere title containing the hemisphere    name. Used a Python dictionary to store the data using the keys img_url and title.
 •	Appended the dictionary with the image url string and the hemisphere title to a list. This list will contain one dictionary   for each hemisphere.
 
