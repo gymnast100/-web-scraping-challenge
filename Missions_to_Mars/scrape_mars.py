@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup as bs
 # the  final scrape all function to run in the app.py file 
 def scrape_info():
    
-    executable_path = {"executable_path": "/usr/local/bin/chromedriver"}
+    executable_path = {"executable_path": "chromedriver"}
     browser =  Browser("chrome", **executable_path, headless=False)
     news_title = scrape_title(browser)
     news_para =  scrape_para(browser)
@@ -15,7 +15,7 @@ def scrape_info():
     html_table_string =  scrape_htmltablestring()
     hemisphere_image_urls =  scrape_hemisphereimageurls(browser)
     
-
+    browser.quit() 
     mars_data = {
         "news_title": news_title ,
          "news_para": news_para,
@@ -24,7 +24,9 @@ def scrape_info():
          "html_table_string" : html_table_string ,
          "hemisphere_image_urls" : hemisphere_image_urls
     }
+    
     return mars_data
+
 
 #  function to scrape news title 
 def scrape_title(browser):
@@ -34,6 +36,7 @@ def scrape_title(browser):
     html_1= browser.html
     soup_1 = bs(html_1, "html.parser")
     news_title = news_title = soup_1.find("div" , class_="content_title").text
+    
     return news_title
 
 #  function to scrape news paagraph
@@ -44,6 +47,7 @@ def scrape_para(browser):
     html_1= browser.html
     soup_1 = bs(html_1, "html.parser")
     news_para = news_para = soup_1.find("div" , class_="rollover_description_inner").text
+  
     return news_para
 
 #  function to scrape featured image
@@ -61,6 +65,8 @@ def scrape_featuredimage(browser):
             featured_img_url=('https://www.jpl.nasa.gov'+ url )
         except :
             pass
+
+    
     return featured_img_url
 
 #  function to scrape twitter tweet
@@ -87,6 +93,7 @@ def scrape_htmltablestring():
     html_table = mars_table.to_html()
     html_table_string = html_table.replace("\n","")
     html_table_string = html_table 
+
     return html_table_string
 
 #  function to scrape mars hemisphere urls and image titles
@@ -117,8 +124,7 @@ def scrape_hemisphereimageurls(browser):
                         post = {"title":title , "img_url":img_url}
                         hemisphere_image_urls.append(post)
     
-    
-    
+
     return hemisphere_image_urls
 
  
